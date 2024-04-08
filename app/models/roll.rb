@@ -15,6 +15,7 @@ class Roll < ApplicationRecord
   validates :pins_knocked_down, numericality: {
     only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10
   }
+
   after_create :update_game_status
   after_create_commit :broadcast_game_score
 
@@ -28,8 +29,7 @@ class Roll < ApplicationRecord
   end
 
   def update_game_status
-    rolls_count = game.rolls.count
-    if rolls_count == 20 || (rolls_count == 21 && game.last_frame_pins >= 10)
+    if game.completed_frames > 10
       game.completed!
     elsif game.started?
       game.running!

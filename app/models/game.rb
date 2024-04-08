@@ -58,6 +58,24 @@ class Game < ApplicationRecord
     end
   end
 
+  def completed_frames
+    frame_index = 1
+    roll_index = 0
+
+    while frame_index <= 10 && roll_index < rolls.length
+      roll1 = rolls[roll_index]
+      roll2 = rolls[roll_index + 1]
+      roll3 = rolls[roll_index + 2]
+
+      roll_index += next_roll_index(roll1)
+      return frame_index if strike_spare_not_completed?(roll1, roll2, roll3)
+
+      frame_index += 1 if strike_spare_completed?(roll1, roll2, roll3) || (roll1.present? && roll2.present?)
+    end
+
+    frame_index
+  end
+
   private
 
   def strike?(roll)
@@ -66,6 +84,14 @@ class Game < ApplicationRecord
 
   def spare?(roll1, roll2)
     roll1.pins_knocked_down + (roll2&.pins_knocked_down || 0) == 10
+  end
+
+  def strike_spare_not_completed?(roll1, roll2, roll3)
+    (strike?(roll1) || (roll2.present? && spare?(roll1, roll2))) && (roll2.blank? || roll3.blank?)
+  end
+
+  def strike_spare_completed?(roll1, roll2, roll3)
+    strike?(roll1) || (roll2.present? && spare?(roll1, roll2)) && (roll2.present? && roll3.present?)
   end
 
   def strike_bonus(roll2, roll3)
