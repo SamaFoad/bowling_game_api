@@ -14,7 +14,7 @@ This API provides endpoints for managing a bowling game, including starting a ne
   - [Running the Server](#running-the-server)
 - [API Endpoints](#api-endpoints)
 - [Examples](#examples)
-- [How to run the test suite](#rspec)
+- [How to run the test suite](#Rspec)
 
 ## Getting Started
 
