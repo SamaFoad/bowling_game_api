@@ -14,7 +14,7 @@ This API provides endpoints for managing a bowling game, including starting a ne
   - [Running the Server](#running-the-server)
 - [API Endpoints](#api-endpoints)
 - [Examples](#examples)
-- [How to run the test suite](#Rspec (Unit Tests 👓 ))
+- [How to run the test suite](#Rspec)
 
 ## Getting Started
 
@@ -86,7 +86,8 @@ curl -X POST http://localhost:3000/games/1/rolls -d "pins_knocked_down=7"
 curl http://localhost:3000/games/1/score
 ```
 
-### Rspec (Unit Tests 👓 )
+### Rspec 
+### (Unit Tests 👓 )
 ```bash
 bundle exec rspec
 ```
