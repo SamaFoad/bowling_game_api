@@ -87,7 +87,7 @@ curl http://localhost:3000/games/1/score
 ```
 
 ### Rspec 
-### (Unit Tests 👓 )
+### (Unit Tests 🧪👓🔎 )
 ```bash
 bundle exec rspec
 ```
