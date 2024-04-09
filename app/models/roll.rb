@@ -16,7 +16,7 @@ class Roll < ApplicationRecord
     only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10
   }
 
-  after_create :update_game_status
+  after_create :update_game_status, :update_total_score
   after_create_commit :broadcast_game_score
 
   def game_must_be_running
@@ -34,6 +34,11 @@ class Roll < ApplicationRecord
     elsif game.started?
       game.running!
     end
+  end
+
+  def update_total_score
+    total_score = game.calculate_score.sum(&:values).sum
+    game.update!(total_score: total_score)
   end
 
   def broadcast_game_score

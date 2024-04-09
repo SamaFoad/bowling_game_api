@@ -13,6 +13,10 @@ class GamesController < ApplicationController
     render json: game
   end
 
+  def index
+    render json: Game.all.order(created_at: :asc)
+  end
+
   def status
     game = Game.find(params[:id])
     render json: { status: game.status }
@@ -22,15 +26,14 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     frame_score = game.calculate_score
     render json: {
-      total_score: frame_score.sum { |frame| frame.values.first },
+      total_score: game.total_score,
       frames_score: frame_score
     }
   end
 
-  # def highest_score
-  #   game = Game.find(params[:id])
-  #   render json: { highest_score: game.highest_score }
-  # end
+  def highest_score
+    render json: { highest_score_games: Game.highest_total_score }
+  end
 
   def close
     game = Game.find_by(id: params[:id])

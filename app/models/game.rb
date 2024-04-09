@@ -6,9 +6,10 @@
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  status                  :string           default("started"), not null
+#  total_score             :integer          default(0)
 #
 class Game < ApplicationRecord
-  has_many :rolls, -> { order(id: :asc, created_at: :asc) }
+  has_many :rolls, -> { order(id: :asc, created_at: :asc) }, dependent: :destroy
 
   STATUS_TYPES = {
     started: 'started',
@@ -20,12 +21,11 @@ class Game < ApplicationRecord
 
   after_update :check_status_change
 
-  def last_frame_pins
-    rolls[18].pins_knocked_down + rolls[19].pins_knocked_down
+  def self.highest_total_score
+    where(total_score: maximum(:total_score))
   end
 
   def calculate_score
-    # total_score = 0
     frame = 1
     roll_index = 0
     frame_score = []
@@ -36,7 +36,6 @@ class Game < ApplicationRecord
       roll3 = rolls[roll_index + 2]
 
       frame_score << { "frame_#{frame}" => frame_score(roll1, roll2, roll3) }
-      # total_score += frame_score[frame - 1]["frame_#{frame}"]
       roll_index += next_roll_index(roll1)
       frame += 1
     end
