@@ -15,6 +15,7 @@ This API provides endpoints for managing a bowling game, including starting a ne
 - [API Endpoints](#api-endpoints)
 - [Examples](#examples)
 - [How to run the test suite](#Rspec)
+- [Future Enhancements](#enhancements)
 
 ## Getting Started
 
@@ -66,7 +67,7 @@ The API will be accessible at `http://localhost:3000`.
 - `GET /games/:id/status`: Output the current game status.
 - `GET /games/:id/close`: close the current game.
 - `POST /games/:id/rolls`: Input the number of pins knocked down by each ball.
-- `GET /games/:id/score`: Output the current game score.
+- `GET /games/:id/score`: Output the current game total score & each frame score.
 
 ## Examples
 
@@ -93,3 +94,44 @@ curl http://localhost:3000/games/1/score
 ```bash
 bundle exec rspec
 ```
+
+## Future Enhancements
+
+**New Requirements:** Keep tracking of the frame details & API endpoints for it. If in the future we need to keep track of each frame with its type (normal, strike, spare) & order (1..10).
+
+### To Do Steps
+1. Create Frame model & controller
+2. Frame model
+
+   ```ruby
+   has_many :rolls, -> { order(id: :asc, created_at: :asc) }
+   belongs_to :game
+   ```
+
+3. Frame model schema
+
+   ```ruby
+   # == Schema Information
+   #
+   # Table name: frames
+   #
+   #  id                      :integer          not null, primary key
+   #  created_at              :datetime         not null
+   #  updated_at              :datetime         not null
+   #  type                    :string           default("normal"), not null
+   #  score                   :integer          default(0)
+   #  remaining_pins          :integer          default(10)
+   #  number                  :integer
+   #  status                  :string           default("started"), not null
+   ```
+
+4. Calculate frame score
+5. Add new API endpoints
+   - GET /games/:id/frames
+   - GET /games/:id/strike_frames
+   - GET /games/:id/spare_frames
+   - GET /frames/:frame_id
+   - GET /frames/:frame_id/status
+   - GET /frames/:frame_id/remaining_pins
+
+These enhancements will allow for better tracking and management of frame details in the bowling game application.
