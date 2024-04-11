@@ -18,16 +18,28 @@ class GamesController < ApplicationController
   end
 
   def status
-    game = Game.find(params[:id])
-    render json: { status: game.status }
+    game_status = $redis.get("game:#{params[:id]}:status")
+    if game_status.blank?
+      game_status = Game.where(id: params[:id]).pluck(:status).first
+      $redis.set("game:#{params[:id]}:status", game_status)
+    end
+    render json: { status: game_status }
   end
 
   def score
-    game = Game.find(params[:id])
-    frame_score = game.calculate_score
+    total_score = $redis.get("game:#{params[:id]}:total_score").to_i
+    frames_score = JSON.parse($redis.get("game:#{params[:id]}:frames_score"))
+    if total_score.blank? || frames_score.blank?
+      game = Game.find(params[:id])
+      total_score = game.total_score
+      frames_score = game.calculate_score
+      $redis.set("game:#{params[:id]}:total_score", total_score)
+      $redis.set("game:#{params[:id]}:frames_score", frames_score)
+    end
+
     render json: {
-      total_score: game.total_score,
-      frames_score: frame_score
+      total_score: total_score,
+      frames_score: frames_score
     }
   end
 

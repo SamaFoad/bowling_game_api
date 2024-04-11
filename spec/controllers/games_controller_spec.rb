@@ -18,8 +18,18 @@ RSpec.describe GamesController, type: :controller do
     end
   end
 
+  describe 'GET index' do
+    it 'returns all games' do
+      Game.create
+      get :index
+      expect(response).to have_http_status(:success)
+      expect(JSON.parse(response.body).length).to eq(Game.all.length)
+    end
+  end
+
   describe 'GET status' do
     it 'returns the game status started' do
+      game = Game.create
       get :status, params: { id: game.id }
       expect(response).to have_http_status(:success)
       expect(JSON.parse(response.body)['status']).to eq('started')
@@ -35,7 +45,7 @@ RSpec.describe GamesController, type: :controller do
   end
 
   describe 'GET score' do
-    it 'returns the game status started' do
+    it 'returns the game score' do
       game.rolls.create(pins_knocked_down: 5)
       game.rolls.create(pins_knocked_down: 2)
       game.rolls.create(pins_knocked_down: 3)
@@ -46,20 +56,37 @@ RSpec.describe GamesController, type: :controller do
       expect(JSON.parse(response.body)['total_score']).to eq(17)
       expect(JSON.parse(response.body)['frames_score'].length).to eq(2)
     end
+  end
 
-    it 'returns the game status running' do
+  describe 'GET highest score' do
+    it 'returns the game score' do
       game.rolls.create(pins_knocked_down: 5)
-      get :status, params: { id: game.id }
+      game.rolls.create(pins_knocked_down: 2)
+      game.rolls.create(pins_knocked_down: 3)
+      game.rolls.create(pins_knocked_down: 7)
+
+      Game.create
+      game.rolls.create(pins_knocked_down: 5)
+      game.rolls.create(pins_knocked_down: 2)
+
+      get :highest_score
       expect(response).to have_http_status(:success)
-      expect(JSON.parse(response.body)['status']).to eq('running')
+      expect(JSON.parse(response.body)['highest_score_games'].length).to eq(1)
     end
   end
 
   describe 'PUT close' do
     it 'returns the game status started' do
-      get :close, params: { id: game.id }
+      put :close, params: { id: game.id }
       expect(response).to have_http_status(:success)
       expect(JSON.parse(response.body)['message']).to eq('Game closed successfully')
+      expect(JSON.parse(response.body)['status']).to eq('closed')
+    end
+
+    it 'returns the game status closed' do
+      put :close, params: { id: game.id }
+      get :status, params: { id: game.id }
+      expect(response).to have_http_status(:success)
       expect(JSON.parse(response.body)['status']).to eq('closed')
     end
   end

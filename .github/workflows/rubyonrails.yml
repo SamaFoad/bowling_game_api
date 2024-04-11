@@ -4,9 +4,22 @@
 #
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
-rspec:
-    runs-on: ubuntu-latest
+name: Ruby CI
 
+on: [push, pull_request]
+
+jobs:
+  setup-ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
+          bundler-cache: true
+
+  setup-postgres:
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:12.18
@@ -17,94 +30,72 @@ rspec:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-      redis:
-        image: redis:alpine
-        options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
-        ports:
-          - 6379:6379
-      memcached:
-        image: memcached:alpine
-        ports:
-          - 11211:11211
+      # Ensure that the 'runs-on' field is properly aligned with the other fields
+    steps:
+      - name: Wait for PostgreSQL
+        run: |
+          until pg_isready; do
+            echo "Waiting for PostgreSQL..."
+            sleep 1
+          done
+
+  install-dependencies:
+    needs: [setup-ruby, setup-postgres]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
-
       - name: Install PostgreSQL client
         run: sudo apt-get install libpq-dev
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
 
-      - name: Install dependencies and create DB
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPASS: postgres
-          PGPORT: 5432
-          RAILS_ENV: test
-        run: |
-          bundle exec rake db:setup
+  run-tests:
+    needs: [install-dependencies]
+    runs-on: ubuntu-latest
+    steps:
       - name: Run tests
-        env:
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPASS: postgres
-          PGPORT: 5432
-          REDISCLOUD_URL: redis://localhost:6379
-          RAILS_ENV: test
-          MEMCACHE_SERVERS: localhost
-        run: |
-          bundle exec rspec
+        run: bundle exec rspec
       - name: Upload coverage for Sonarcloud
         uses: actions/upload-artifact@v3
         with:
           name: rspec_track
           path: ./coverage/.resultset.json
 
-
-  # RUN RUBOCOP
   rubocop:
+    needs: [install-dependencies]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - name: Cache RuboCop gems
+        uses: actions/cache@v2
         with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
-
-      - uses: actions/cache@v3
-        with:
-          path: vendor/rubocop_cache
-          key: ${{ runner.os }}-rubocop-cache
+          path: vendor/bundle
+          key: ${{ runner.os }}-rubocop-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-rubocop-cache
-
+            ${{ runner.os }}-rubocop-
       - name: Rubocop
-        run: |
-          bundle exec rubocop --parallel --cache-root vendor/rubocop_cache
+        run: bundle exec rubocop --parallel
 
-  # RUN RUBYCRITIC
   rubycritic:
+    needs: [install-dependencies]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - name: Cache RubyCritic gems
+        uses: actions/cache@v2
         with:
-          ruby-version: 3.0.0
-
+          path: vendor/bundle
+          key: ${{ runner.os }}-rubycritic-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-rubycritic-
       - name: Run Rubycritic
         run: |
           gem install reek -v 6.1.4 --no-document
           gem install rubycritic --no-document
           rubycritic
 
-  # FAST FAIL
   fast_fail:
-    runs-on: ubuntu-latest
     needs: [rubocop, rubycritic]
+    runs-on: ubuntu-latest
     if: failure()
-
     steps:
       - name: Fail current workflow
         uses: andymckay/cancel-action@0.3

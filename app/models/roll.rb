@@ -34,6 +34,7 @@ class Roll < ApplicationRecord
     elsif game.started?
       game.running!
     end
+    $redis.set("game:#{game.id}:status", game.status)
   end
 
   def update_total_score
@@ -42,7 +43,16 @@ class Roll < ApplicationRecord
   end
 
   def broadcast_game_score
-    ActionCable.server.broadcast("game_channel_#{game.id}",
-                                 { score: game.calculate_score, status: game.status })
+    update_redis_scores
+    broadcast_score_update
+  end
+
+  def update_redis_scores
+    $redis.set("game:#{game.id}:frames_score", game.calculate_score.to_json)
+    $redis.set("game:#{game.id}:total_score", game.total_score)
+  end
+
+  def broadcast_score_update
+    ActionCable.server.broadcast("game_channel_#{game.id}", { score: game.calculate_score })
   end
 end
