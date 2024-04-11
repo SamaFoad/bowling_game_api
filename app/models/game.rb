@@ -21,7 +21,7 @@ class Game < ApplicationRecord
   }.freeze
   enum status: STATUS_TYPES
 
-  after_update_commit :track_game_status_change
+  after_commit :track_game_status_change, on: [:create, :update]
 
   def self.highest_total_score
     where(total_score: maximum(:total_score))
@@ -70,7 +70,7 @@ class Game < ApplicationRecord
   private
 
   def track_game_status_change
-    return unless saved_change_to_status?
+    return unless saved_change_to_status? || status == STATUS_TYPES[:started]
 
     $redis.set("game:#{id}:status", status)
     ActionCable.server.broadcast("game_channel_#{id}", { status: status })

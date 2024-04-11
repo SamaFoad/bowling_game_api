@@ -12,6 +12,7 @@ This API provides endpoints for managing a bowling game, including starting a ne
 - [API Endpoints](#api-endpoints)
 - [Examples](#examples)
 - [How to run the test suite](#Rspec)
+- [Project Demo Video](#project-demo-video)
 - [Future Enhancements](#future-enhancements)
   
 
@@ -93,11 +94,21 @@ curl http://localhost:3000/games/1/score
 bundle exec rspec
 ```
 
+## Project Demo Video
+
+### Demo Video
+
+<iframe width="560" height="315" src="https://drive.google.com/file/d/1xQjyms3xnq2p0U9RutvibEMJYXSKYw-v/view?usp=sharing" frameborder="0" allowfullscreen></iframe>
+
+### Broadcasting and Rspec Demo Video
+
+<iframe width="560" height="315" src="https://drive.google.com/file/d/1xQjyms3xnq2p0U9RutvibEMJYXSKYw-v/view?usp=sharing" frameborder="0" allowfullscreen></iframe>
+
 
 
 ## Future Enhancements
 
-**New Requirements:** Keep tracking of the frame details & API endpoints for it. If in the future we need to keep track of each frame with its type (normal, strike, spare) & order (1..10).
+**New Requirements:** Keep tracking of the frame details & API endpoints for it. If in the future we need to keep track of each frame with its type (normal, strike, spare) & frame number (1..10). Add another language to the API (Spanish, French, German, etc.)
 
 ### To Do Steps
 1. Create Frame model & controller
@@ -133,5 +144,6 @@ bundle exec rspec
    - GET /frames/:frame_id
    - GET /frames/:frame_id/status
    - GET /frames/:frame_id/remaining_pins
+6. Add new locales (Spanish, French, German, etc.)
 
 These enhancements will allow for better tracking and management of frame details in the bowling game application.
