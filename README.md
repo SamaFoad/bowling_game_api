@@ -15,7 +15,8 @@ This API provides endpoints for managing a bowling game, including starting a ne
 - [API Endpoints](#api-endpoints)
 - [Examples](#examples)
 - [How to run the test suite](#Rspec)
-- [Future Enhancements](#enhancements)
+- [Future Enhancements](#future-enhancements)
+  
 
 ## Getting Started
 
@@ -94,6 +95,8 @@ curl http://localhost:3000/games/1/score
 ```bash
 bundle exec rspec
 ```
+
+
 
 ## Future Enhancements
 
