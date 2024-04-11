@@ -60,6 +60,8 @@ The API will be accessible at `http://localhost:3000`.
 ## API Endpoints
 
 - `POST /games`: Start a new game
+- `GET /games`: Get all games index
+- `GET /games/highest_score`: Get all games with highest score
 - `GET /games/:id`: Output the current game.
 - `GET /games/:id/status`: Output the current game status.
 - `GET /games/:id/close`: close the current game.
