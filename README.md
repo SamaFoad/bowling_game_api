@@ -13,6 +13,7 @@ This API provides endpoints for managing a bowling game, including starting a ne
 - [Examples](#examples)
 - [How to run the test suite](#Rspec)
 - [Project Demo Video](#project-demo-video)
+- [Download Postman Collection](https://github.com/SamaFoad/bowling_game_api/blob/main/Bowling%20Game%20API.postman_collection.json)
 - [Future Enhancements](#future-enhancements)
   
 
