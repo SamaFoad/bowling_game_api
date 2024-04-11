@@ -1,0 +1,915 @@
+{
+	"info": {
+		"_postman_id": "ec62dfa4-7450-44de-a635-f6cf10340a7a",
+		"name": "Bowling Game API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21647526"
+	},
+	"item": [
+		{
+			"name": "Calculate Score",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games/14/score",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"14",
+						"score"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Calculate Score",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/games/23/score",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games",
+								"23",
+								"score"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5bacc9273e0b04a61b675c67ef7765d4\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "1f8f4633-c255-4b03-9c2e-c26418fce7c6"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.002264"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"total_score\": 201,\n    \"frames_score\": [\n        {\n            \"frame_1\": 7\n        },\n        {\n            \"frame_2\": 18\n        },\n        {\n            \"frame_3\": 8\n        },\n        {\n            \"frame_4\": 15\n        },\n        {\n            \"frame_5\": 8\n        },\n        {\n            \"frame_6\": 30\n        },\n        {\n            \"frame_7\": 30\n        },\n        {\n            \"frame_8\": 30\n        },\n        {\n            \"frame_9\": 30\n        },\n        {\n            \"frame_10\": 25\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Game Status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games/22/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"22",
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Game Status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/games/26/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games",
+								"26",
+								"status"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"409443a6ee5aa296dccd6c0d193e2145\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "37fd6bb5-9c3f-422e-ad34-64990e480133"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.002147"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"running\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Game Highest Score",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games/highest_score",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"highest_score"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Game Highest Score",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/games/highest_score",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games",
+								"highest_score"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f88fb65745a92bb4a0586dfb5cbdb87d\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "65142111-b1e4-4a2c-b831-9e73a62ccbf9"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.004428"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"highest_score_games\": [\n        {\n            \"id\": 12,\n            \"created_at\": \"2024-04-08T20:40:34.779Z\",\n            \"updated_at\": \"2024-04-09T13:05:19.122Z\",\n            \"status\": \"completed\",\n            \"total_score\": 300\n        },\n        {\n            \"id\": 13,\n            \"created_at\": \"2024-04-09T13:22:33.693Z\",\n            \"updated_at\": \"2024-04-11T00:49:44.572Z\",\n            \"status\": \"completed\",\n            \"total_score\": 300\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Game Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Game Index",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/games",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1cb011ed0e57fcb81b7d80aea396ab97\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "5152e708-935b-4c95-bef2-5c4eb21f4866"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.003903"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 7,\n        \"created_at\": \"2024-04-08T10:43:40.314Z\",\n        \"updated_at\": \"2024-04-08T17:25:22.276Z\",\n        \"status\": \"closed\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 8,\n        \"created_at\": \"2024-04-08T10:43:48.398Z\",\n        \"updated_at\": \"2024-04-08T12:46:52.601Z\",\n        \"status\": \"completed\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 9,\n        \"created_at\": \"2024-04-08T13:24:40.300Z\",\n        \"updated_at\": \"2024-04-08T14:05:04.964Z\",\n        \"status\": \"closed\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 10,\n        \"created_at\": \"2024-04-08T14:04:12.254Z\",\n        \"updated_at\": \"2024-04-08T20:38:51.083Z\",\n        \"status\": \"completed\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 11,\n        \"created_at\": \"2024-04-08T14:17:58.050Z\",\n        \"updated_at\": \"2024-04-08T21:12:53.518Z\",\n        \"status\": \"completed\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 12,\n        \"created_at\": \"2024-04-08T20:40:34.779Z\",\n        \"updated_at\": \"2024-04-09T13:05:19.122Z\",\n        \"status\": \"completed\",\n        \"total_score\": 300\n    },\n    {\n        \"id\": 13,\n        \"created_at\": \"2024-04-09T13:22:33.693Z\",\n        \"updated_at\": \"2024-04-11T00:49:44.572Z\",\n        \"status\": \"completed\",\n        \"total_score\": 300\n    },\n    {\n        \"id\": 14,\n        \"created_at\": \"2024-04-11T01:43:55.768Z\",\n        \"updated_at\": \"2024-04-11T09:52:42.709Z\",\n        \"status\": \"running\",\n        \"total_score\": 99\n    },\n    {\n        \"id\": 16,\n        \"created_at\": \"2024-04-11T10:21:38.798Z\",\n        \"updated_at\": \"2024-04-11T10:21:38.798Z\",\n        \"status\": \"started\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 17,\n        \"created_at\": \"2024-04-11T10:22:21.661Z\",\n        \"updated_at\": \"2024-04-11T10:22:21.661Z\",\n        \"status\": \"started\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 18,\n        \"created_at\": \"2024-04-11T10:23:12.943Z\",\n        \"updated_at\": \"2024-04-11T10:23:12.943Z\",\n        \"status\": \"started\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 19,\n        \"created_at\": \"2024-04-11T10:25:01.837Z\",\n        \"updated_at\": \"2024-04-11T10:25:01.837Z\",\n        \"status\": \"started\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 20,\n        \"created_at\": \"2024-04-11T10:25:34.381Z\",\n        \"updated_at\": \"2024-04-11T10:25:34.381Z\",\n        \"status\": \"started\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 21,\n        \"created_at\": \"2024-04-11T10:26:03.089Z\",\n        \"updated_at\": \"2024-04-11T10:26:03.089Z\",\n        \"status\": \"started\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 22,\n        \"created_at\": \"2024-04-11T10:27:45.010Z\",\n        \"updated_at\": \"2024-04-11T10:27:45.010Z\",\n        \"status\": \"started\",\n        \"total_score\": 0\n    },\n    {\n        \"id\": 23,\n        \"created_at\": \"2024-04-11T10:29:10.192Z\",\n        \"updated_at\": \"2024-04-11T10:34:00.740Z\",\n        \"status\": \"completed\",\n        \"total_score\": 201\n    },\n    {\n        \"id\": 24,\n        \"created_at\": \"2024-04-11T10:35:27.235Z\",\n        \"updated_at\": \"2024-04-11T10:36:21.503Z\",\n        \"status\": \"closed\",\n        \"total_score\": 5\n    },\n    {\n        \"id\": 25,\n        \"created_at\": \"2024-04-11T10:56:21.836Z\",\n        \"updated_at\": \"2024-04-11T10:57:19.159Z\",\n        \"status\": \"closed\",\n        \"total_score\": 10\n    },\n    {\n        \"id\": 26,\n        \"created_at\": \"2024-04-11T11:18:28.395Z\",\n        \"updated_at\": \"2024-04-11T11:18:54.791Z\",\n        \"status\": \"running\",\n        \"total_score\": 10\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Close Game",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games/13/close",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"13",
+						"close"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Close Game",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/games/26/close",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games",
+								"26",
+								"close"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4e46e2594ac9bde3453b6c2204cb3123\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "e1630feb-17f9-4367-aa84-34cd0e9e2d2b"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.012978"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Game closed successfully\",\n    \"status\": \"closed\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Show Game",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"22"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Show Game",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/games/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games",
+								"26"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"05fd916f4a75c62ccc20bf488aa2c5b4\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "6ba68fd6-84c9-4c3a-9117-85d57e146206"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.002787"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 26,\n    \"created_at\": \"2024-04-11T11:18:28.395Z\",\n    \"updated_at\": \"2024-04-11T11:18:54.791Z\",\n    \"status\": \"running\",\n    \"total_score\": 10\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Roll (pins knocked down)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pins_knocked_down\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/games/14/rolls",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games",
+						"14",
+						"rolls"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Roll (pins knocked down)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pins_knocked_down\": 10\n    //strike\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/games/26/rolls",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games",
+								"26",
+								"rolls"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e816032b8b3f54ccbb9145671a2f2dc4\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "2e612969-2f6e-42c2-a4b8-0f48bec27df0"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.018229"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 185,\n    \"game_id\": 26,\n    \"pins_knocked_down\": 10,\n    \"created_at\": \"2024-04-11T11:18:54.786Z\",\n    \"updated_at\": \"2024-04-11T11:18:54.786Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create/Start Game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/games",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"games"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create/Start Game",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/games",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"games"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Permitted-Cross-Domain-Policies",
+							"value": "none"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d92c6c4b5218cc1e5e26c08386253f49\""
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "2cc34a25-c4ea-48ef-b716-d4ee7b8b6968"
+						},
+						{
+							"key": "X-Runtime",
+							"value": "0.018315"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 26,\n    \"created_at\": \"2024-04-11T11:18:28.395Z\",\n    \"updated_at\": \"2024-04-11T11:18:28.395Z\",\n    \"status\": \"started\",\n    \"total_score\": 0\n}"
+				}
+			]
+		}
+	]
+}
