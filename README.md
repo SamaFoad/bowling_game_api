@@ -1,6 +1,3 @@
-Here's a template for a comprehensive README.md file for your Bowling Game API:
-
----
 
 # Bowling Game API
 
